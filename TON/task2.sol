@@ -18,7 +18,7 @@ contract task2 {
 	}
 
 	function multiply(uint value) public checkOwnerAndAccept {
-        require(value >= 0 && value <=10, 65);
+        require(value >= 1 && value <=10, 65);
 		mul *= value;
 	}
 }
