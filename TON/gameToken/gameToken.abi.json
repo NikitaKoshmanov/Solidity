@@ -1,0 +1,48 @@
+{
+	"ABI version": 2,
+	"version": "2.1",
+	"header": ["time", "expire"],
+	"functions": [
+		{
+			"name": "createToken",
+			"inputs": [
+				{"name":"name","type":"string"},
+				{"name":"weapon","type":"string"},
+				{"name":"power","type":"uint256"},
+				{"name":"clothes","type":"string"},
+				{"name":"armor","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "sellToken",
+			"inputs": [
+				{"name":"tokenID","type":"uint256"},
+				{"name":"price","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	],
+	"fields": [
+		{"name":"_pubkey","type":"uint256"},
+		{"name":"_timestamp","type":"uint64"},
+		{"name":"_constructorFlag","type":"bool"},
+		{"components":[{"name":"name","type":"string"},{"name":"weapon","type":"string"},{"name":"power","type":"uint256"},{"name":"clothes","type":"string"},{"name":"armor","type":"uint256"},{"name":"price","type":"uint256"}],"name":"tokensArr","type":"tuple[]"},
+		{"name":"tokenToOwner","type":"map(uint256,uint256)"},
+		{"name":"reservedNames","type":"optional(cell)"},
+		{"name":"addressForSellings","type":"uint256"}
+	]
+}
