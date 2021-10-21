@@ -14,11 +14,17 @@ contract gameToken{
 
     Token[] tokensArr;
     mapping(uint => uint) tokenToOwner;
+    mapping(uint => uint) listedTokens;
     mapping(string => uint) reservedNames;
-    uint private addressForSellings = 123456789;
 
     modifier checkOwnerOfTokenAndAccept(uint tokenID) {
         require(msg.pubkey() == tokenToOwner[tokenID], 101);
+		tvm.accept();
+		_;
+	}
+
+    modifier checkOwnerOfListedTokenAndAccept(uint tokenID) {
+        require(msg.pubkey() == listedTokens[tokenID], 101);
 		tvm.accept();
 		_;
 	}
@@ -32,8 +38,15 @@ contract gameToken{
         reservedNames[name] = msg.pubkey();
     }
 
-    function sellToken(uint tokenID, uint price) public checkOwnerOfTokenAndAccept(tokenID){
-        tokenToOwner[tokenID] = addressForSellings;
+    function listToken(uint tokenID, uint price) public checkOwnerOfTokenAndAccept(tokenID){
+        delete tokenToOwner[tokenID];
+        listedTokens[tokenID] = msg.pubkey();
         tokensArr[tokenID].price = price;
+    }
+
+    function unlistToken(uint tokenID) public checkOwnerOfListedTokenAndAccept(tokenID){
+        delete listedTokens[tokenID];
+        tokenToOwner[tokenID] = msg.pubkey();
+        tokensArr[tokenID].price = 0;
     }
 }
