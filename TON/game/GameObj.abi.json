@@ -1,0 +1,76 @@
+{
+	"ABI version": 2,
+	"version": "2.1",
+	"header": ["time", "expire"],
+	"functions": [
+		{
+			"name": "addUnit",
+			"inputs": [
+				{"name":"unitType","type":"string"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getObj",
+			"inputs": [
+				{"name":"addr","type":"address"}
+			],
+			"outputs": [
+				{"components":[{"name":"unitType","type":"string"},{"name":"armor","type":"int256"},{"name":"power","type":"uint256"},{"name":"money","type":"uint256"}],"name":"value0","type":"tuple"}
+			]
+		},
+		{
+			"name": "getAddress",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"address"}
+			]
+		},
+		{
+			"name": "getArmor",
+			"inputs": [
+				{"name":"_armor","type":"int256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getDamage",
+			"inputs": [
+				{"name":"receiver","type":"address"},
+				{"name":"damage","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"reward","type":"uint256"}
+			]
+		},
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "callerAddress",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"callerAddress","type":"address"}
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	],
+	"fields": [
+		{"name":"_pubkey","type":"uint256"},
+		{"name":"_timestamp","type":"uint64"},
+		{"name":"_constructorFlag","type":"bool"},
+		{"name":"callerAddress","type":"address"},
+		{"components":[{"name":"unitType","type":"string"},{"name":"armor","type":"int256"},{"name":"power","type":"uint256"},{"name":"money","type":"uint256"}],"name":"objects","type":"map(address,tuple)"}
+	]
+}
