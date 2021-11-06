@@ -1,0 +1,17 @@
+Config: default
+Input arguments:
+     tvc: todoDebot.tvc
+      wc: None
+    keys: todoDebot.keys.json
+init_data: None
+is_update_tvc: None
+
+Seed phrase: "shed dragon initial tail exchange avoid naive arm unusual term mechanic aware"
+Raw address: 0:f1b82c6ecbf73016a72fa3b39eb2fb6709a162ec26cd9a11b70039b2d0c85a19
+testnet:
+Non-bounceable address (for init): 0QDxuCxuy_cwFqcvo7OesvtnCaFi7CbNmhG3ADmy0MhaGahh
+Bounceable address (for later access): kQDxuCxuy_cwFqcvo7OesvtnCaFi7CbNmhG3ADmy0MhaGfWk
+mainnet:
+Non-bounceable address (for init): UQDxuCxuy_cwFqcvo7OesvtnCaFi7CbNmhG3ADmy0MhaGRPr
+Bounceable address (for later access): EQDxuCxuy_cwFqcvo7OesvtnCaFi7CbNmhG3ADmy0MhaGU4u
+Succeeded
