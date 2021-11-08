@@ -2,7 +2,7 @@ pragma ton-solidity >= 0.35.0;
 pragma AbiHeader expire;
 pragma AbiHeader pubkey;
 
-contract Purchase {
+contract Purchases {
     /*
      * ERROR CODES
      * 100 - Unauthorized
@@ -19,7 +19,7 @@ contract Purchase {
     struct Purchase {
         uint32 id;
         string text;
-        uint32 amount;
+        //uint32 amount;
         uint64 createdAt;
         bool isDone;
         uint32 sum;
@@ -41,20 +41,20 @@ contract Purchase {
         m_ownerPubkey = pubkey;
     }
 
-    function createPurchase(string text, uint32 _amount) public onlyOwner {
+    function createTask(string text) public onlyOwner {
         tvm.accept();
         m_count++;
-        m_purchases[m_count] = Purchase(m_count, text, _amount, now, false, 0);
+        m_purchases[m_count] = Purchase(m_count, text, now, false, 0);
     }
 
-    function updatePurchase(uint32 id, bool done) public onlyOwner {
+    /*function updatePurchase(uint32 id, bool done) public onlyOwner {
         optional(Purchase) task = m_purchases.fetch(id);
         require(task.hasValue(), 102);
         tvm.accept();
         Purchase thisTask = task.get();
         thisTask.isDone = done;
         m_purchases[id] = thisTask;
-    }
+    }*/
 
     function deletePurchase(uint32 id) public onlyOwner {
         require(m_purchases.exists(id), 102);
@@ -66,7 +66,7 @@ contract Purchase {
     // Get methods
     //
 
-    function getPurchases() public view returns (Purchase[] tasks) {
+    function getTasks() public view returns (Purchase[] tasks) {
         string text;
         uint64 createdAt;
         bool isDone;
@@ -77,9 +77,9 @@ contract Purchase {
             text = task.text;
             isDone = task.isDone;
             createdAt = task.createdAt;
-            amount = task.amount;
+            //amount = task.amount;
             sum = task.sum;
-            tasks.push(Purchase(id, text, amount, createdAt, isDone, sum));
+            tasks.push(Purchase(id, text, createdAt, isDone, sum));
        }
     }
 

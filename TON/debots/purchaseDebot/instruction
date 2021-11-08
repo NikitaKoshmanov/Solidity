@@ -1,0 +1,24 @@
+tondev sol compile purchase.sol
+tonos-cli decode stateinit purchase.tvc --tvc
+сохранить purchase.decode.json
+
+tondev sol compile purchaseDebot.sol
+tonos-cli genaddr purchaseDebot.tvc purchaseDebot.abi.json --genkey purchaseDebot.keys.json > log.log
+
+Закинуть денег EXTRATON
+Задеплоить
+tonos-cli --url https://net.ton.dev deploy purchaseDebot.tvc "{}" --sign purchaseDebot.keys.json --abi purchaseDebot.abi.json
+
+Записать purchaseDebot.abi.json в dabi.json http://tomeko.net/online_tools/file_to_hex.php?lang=en:
+{
+    "dabi": ""
+}
+Установить dabi
+tonos-cli --url https://net.ton.dev call 0:6214ecc4bf799fcf32e23c962a49d19b3c1475f8ee655e9e2115714f991f5198 setABI dabi.json --sign purchaseDebot.keys.json --abi purchaseDebot.abi.json
+
+tonos-cli --url https://net.ton.dev call --abi purchaseDebot.abi.json --sign purchaseDebot.keys.json 0:6214ecc4bf799fcf32e23c962a49d19b3c1475f8ee655e9e2115714f991f5198 setTodoCode purchase.decode.json
+Вызываем дебота
+tonos-cli --url https://net.ton.dev debot --debug fetch 0:6214ecc4bf799fcf32e23c962a49d19b3c1475f8ee655e9e2115714f991f5198
+https://web.ton.surf/debot?address=0%3A6214ecc4bf799fcf32e23c962a49d19b3c1475f8ee655e9e2115714f991f5198&net=devnet&restart=true
+
+1fccea5c0660acbc5f616c1500a3a5243a81d2545ae6a5b79a0af1f22586a948

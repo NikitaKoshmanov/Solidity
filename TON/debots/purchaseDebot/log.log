@@ -1,17 +1,17 @@
 Config: default
 Input arguments:
-     tvc: todoDebot.tvc
+     tvc: purchaseDebot.tvc
       wc: None
-    keys: todoDebot.keys.json
+    keys: purchaseDebot.keys.json
 init_data: None
 is_update_tvc: None
 
-Seed phrase: "shed dragon initial tail exchange avoid naive arm unusual term mechanic aware"
-Raw address: 0:f1b82c6ecbf73016a72fa3b39eb2fb6709a162ec26cd9a11b70039b2d0c85a19
+Seed phrase: "slam topple exhaust brain jump legend beef dog often weapon list depart"
+Raw address: 0:6214ecc4bf799fcf32e23c962a49d19b3c1475f8ee655e9e2115714f991f5198
 testnet:
-Non-bounceable address (for init): 0QDxuCxuy_cwFqcvo7OesvtnCaFi7CbNmhG3ADmy0MhaGahh
-Bounceable address (for later access): kQDxuCxuy_cwFqcvo7OesvtnCaFi7CbNmhG3ADmy0MhaGfWk
+Non-bounceable address (for init): 0QBiFOzEv3mfzzLiPJYqSdGbPBR1-O5lXp4hFXFPmR9RmKZv
+Bounceable address (for later access): kQBiFOzEv3mfzzLiPJYqSdGbPBR1-O5lXp4hFXFPmR9RmPuq
 mainnet:
-Non-bounceable address (for init): UQDxuCxuy_cwFqcvo7OesvtnCaFi7CbNmhG3ADmy0MhaGRPr
-Bounceable address (for later access): EQDxuCxuy_cwFqcvo7OesvtnCaFi7CbNmhG3ADmy0MhaGU4u
+Non-bounceable address (for init): UQBiFOzEv3mfzzLiPJYqSdGbPBR1-O5lXp4hFXFPmR9RmB3l
+Bounceable address (for later access): EQBiFOzEv3mfzzLiPJYqSdGbPBR1-O5lXp4hFXFPmR9RmEAg
 Succeeded

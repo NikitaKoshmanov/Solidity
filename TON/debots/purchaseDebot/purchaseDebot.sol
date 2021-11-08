@@ -11,12 +11,15 @@ import "../ConfirmInput.sol";
 import "../Upgradable.sol";
 import "../Sdk.sol";
 
-struct Task {
-    uint32 id;
-    string text;
-    uint64 createdAt;
-    bool isDone;
+struct Purchase {
+        uint32 id;
+        string text;
+        //uint32 amount;
+        uint64 createdAt;
+        bool isDone;
+        uint32 sum;
 }
+
 
 struct Stat {
     uint32 completeCount;
@@ -33,15 +36,17 @@ abstract contract ATodo {
 }
 
 interface ITodo {
-   function createPurchase(string text) external;
-   function updatePurchase(uint32 id, bool done) external;
-   function deletePurchase(uint32 id) external;
-   function getPurchases() external returns (Task[] tasks);
-   function getStat() external returns (Stat);
+    //function createPurchase(string text, uint32 amount) external;
+    function createTask(string text) external;
+
+    function updatePurchase(uint32 id, bool done) external;
+    function deletePurchase(uint32 id) external;
+    function getTasks() external returns (Purchase[] tasks);
+    function getStat() external returns (Stat);
 }
 
 
-contract TodoDebot is Debot, Upgradable {
+contract purchaseDebot is Debot, Upgradable {
     bytes m_icon;
 
     TvmCell public m_todoCode; // TODO contract code
@@ -83,13 +88,13 @@ contract TodoDebot is Debot, Upgradable {
         string name, string version, string publisher, string key, string author,
         address support, string hello, string language, string dabi, bytes icon
     ) {
-        name = "TODO DeBot";
-        version = "0.2.0";
-        publisher = "TON Labs";
-        key = "TODO list manager";
-        author = "TON Labs";
+        name = "Purchases";
+        version = "0.1";
+        publisher = "Dadanik Interective";
+        key = "Purchases list manager";
+        author = "dadanikita";
         support = address.makeAddrStd(0, 0x66e01d6df5a8d7677d9ab2daf7f258f1e2a7fe73da5320300395f99e01dc3b5f);
-        hello = "Hi, i'm a TODO DeBot.";
+        hello = "Hi, i'm a Purchases DeBot.";
         language = "en";
         dabi = m_debotAbi.get();
         icon = m_icon;
@@ -217,9 +222,9 @@ contract TodoDebot is Debot, Upgradable {
             ),
             sep,
             [
-                MenuItem("Create new purchase","",tvm.functionId(createTask)),
+                MenuItem("Add product","",tvm.functionId(createTask)),
                 MenuItem("Show purchases list","",tvm.functionId(showTasks)),
-                MenuItem("Update purchase status","",tvm.functionId(updateTask)),
+                //MenuItem("Update purchase status","",tvm.functionId(updateTask)),
                 MenuItem("Delete purchase","",tvm.functionId(deleteTask))
             ]
         );
@@ -232,7 +237,7 @@ contract TodoDebot is Debot, Upgradable {
 
     function createTask_(string value) public view {
         optional(uint256) pubkey = 0;
-        ITodo(m_address).createPurchase{
+        ITodo(m_address).createTask{
                 abiVer: 2,
                 extMsg: true,
                 sign: true,
@@ -247,7 +252,7 @@ contract TodoDebot is Debot, Upgradable {
     function showTasks(uint32 index) public view {
         index = index;
         optional(uint256) none;
-        ITodo(m_address).getPurchases{
+        ITodo(m_address).getTasks{
             abiVer: 2,
             extMsg: true,
             sign: false,
@@ -259,19 +264,19 @@ contract TodoDebot is Debot, Upgradable {
         }();
     }
 
-    function showTasks_( Task[] tasks ) public {
+    function showTasks_( Purchase[] tasks ) public {
         uint32 i;
         if (tasks.length > 0 ) {
             Terminal.print(0, "Your purchases list:");
             for (i = 0; i < tasks.length; i++) {
-                Task task = tasks[i];
+                Purchase purchase = tasks[i];
                 string completed;
-                if (task.isDone) {
+                if (purchase.isDone) {
                     completed = '✓';
                 } else {
                     completed = ' ';
                 }
-                Terminal.print(0, format("{} {}  \"{}\"  at {}", task.id, completed, task.text, task.createdAt));
+                Terminal.print(0, format("{} {} \"{}\" at {}", purchase.id, completed, purchase.text, purchase.createdAt));
             }
         } else {
             Terminal.print(0, "Your purchases list is empty");
@@ -279,7 +284,7 @@ contract TodoDebot is Debot, Upgradable {
         _menu();
     }
 
-    function updateTask(uint32 index) public {
+    /*function updateTask(uint32 index) public {
         index = index;
         if (m_stat.completeCount + m_stat.incompleteCount > 0) {
             Terminal.input(tvm.functionId(updateTask_), "Enter purchase number:", false);
@@ -307,7 +312,7 @@ contract TodoDebot is Debot, Upgradable {
                 callbackId: tvm.functionId(onSuccess),
                 onErrorId: tvm.functionId(onError)
             }(m_taskId, value);
-    }
+    }*/
 
 
     function deleteTask(uint32 index) public {
