@@ -21,6 +21,7 @@ abstract contract D_ListInitialization is Debot, Upgradable {
     address m_address;
     ShoppingSummary m_ShoppingSummary; 
     uint32 amountOfProducts;
+    string nameOfProduct;
     uint32 m_purchaseId;
     uint32 m_purchasePrice;
     uint256 m_masterPubKey;

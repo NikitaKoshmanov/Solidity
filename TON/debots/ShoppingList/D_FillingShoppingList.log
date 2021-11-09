@@ -1,0 +1,17 @@
+Config: default
+Input arguments:
+     tvc: D_FillingShoppingList.tvc
+      wc: None
+    keys: D_FillingShoppingList.keys.json
+init_data: None
+is_update_tvc: None
+
+Seed phrase: "relax inject field genre uncover van before father refuse science emerge say"
+Raw address: 0:a566d8fd5f08ed0719fe278c041a68c0996efdcf6b59569f7ec4a202605b7639
+testnet:
+Non-bounceable address (for init): 0QClZtj9XwjtBxn-J4wEGmjAmW79z2tZVp9-xKICYFt2OWNJ
+Bounceable address (for later access): kQClZtj9XwjtBxn-J4wEGmjAmW79z2tZVp9-xKICYFt2OT6M
+mainnet:
+Non-bounceable address (for init): UQClZtj9XwjtBxn-J4wEGmjAmW79z2tZVp9-xKICYFt2OdjD
+Bounceable address (for later access): EQClZtj9XwjtBxn-J4wEGmjAmW79z2tZVp9-xKICYFt2OYUG
+Succeeded

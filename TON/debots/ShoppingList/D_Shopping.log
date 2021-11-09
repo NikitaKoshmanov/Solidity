@@ -1,0 +1,17 @@
+Config: default
+Input arguments:
+     tvc: D_Shopping.tvc
+      wc: None
+    keys: D_Shopping.keys.json
+init_data: None
+is_update_tvc: None
+
+Seed phrase: "jazz error supreme finger method faint ecology tooth shine certain meadow label"
+Raw address: 0:e0e4a8f68b6bb76b4245e349340eef1ef51b0f4ce6cc4af4ec20c898caa4bcef
+testnet:
+Non-bounceable address (for init): 0QDg5Kj2i2u3a0JF40k0Du8e9RsPTObMSvTsIMiYyqS873uu
+Bounceable address (for later access): kQDg5Kj2i2u3a0JF40k0Du8e9RsPTObMSvTsIMiYyqS87yZr
+mainnet:
+Non-bounceable address (for init): UQDg5Kj2i2u3a0JF40k0Du8e9RsPTObMSvTsIMiYyqS878Ak
+Bounceable address (for later access): EQDg5Kj2i2u3a0JF40k0Du8e9RsPTObMSvTsIMiYyqS8753h
+Succeeded

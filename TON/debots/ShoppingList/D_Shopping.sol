@@ -26,7 +26,7 @@ contract D_Shopping is D_ListInitialization{
         string sep = '----------------------------------------';
         Menu.select(
             format(
-                "You have {} / {} / {} (completed purchases / incompleted purchases / total price)",
+                "You have {} / {} / {} (purchased products / not purchased products / total price)",
                     m_ShoppingSummary.completeCount,
                     m_ShoppingSummary.incompleteCount,
                     m_ShoppingSummary.totalPrice

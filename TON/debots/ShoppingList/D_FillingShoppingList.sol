@@ -25,7 +25,7 @@ contract D_FillingShoppingList is D_ListInitialization{
         string sep = '----------------------------------------';
         Menu.select(
             format(
-                "You have {} / {} / {} (completed purchases / incompleted purchases / total price)",
+                "You have {} / {} / {} (purchased products / not purchased products / total price)",
                     m_ShoppingSummary.completeCount,
                     m_ShoppingSummary.incompleteCount,
                     m_ShoppingSummary.totalPrice
@@ -41,16 +41,17 @@ contract D_FillingShoppingList is D_ListInitialization{
     
     function createPurchase(uint32 index) public{
         index = index;
-        Terminal.input(tvm.functionId(createPurchase__), "Enter product name:", false);
+        Terminal.input(tvm.functionId(createPurchase_), "Enter product name:", false);
     }
 
     function createPurchase_(string value) public {
-        (uint256 num,) = stoi(value);
-        amountOfProducts = uint32(num);
+        nameOfProduct = value;
         Terminal.input(tvm.functionId(createPurchase__), "Enter amount:", false);
     }
         
     function createPurchase__(string value) public {
+        (uint256 num,) = stoi(value);
+        amountOfProducts = uint32(num);
         optional(uint256) pubkey = 0;
         I_ShoppingList(m_address).createPurchase{
                 abiVer: 2,
@@ -61,7 +62,7 @@ contract D_FillingShoppingList is D_ListInitialization{
                 expire: 0,
                 callbackId: tvm.functionId(onSuccess),
                 onErrorId: tvm.functionId(onError)
-            }(value, amountOfProducts);
+            }(nameOfProduct, amountOfProducts);
     }
 
     function showPurchases(uint32 index) public view {
