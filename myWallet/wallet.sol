@@ -10,6 +10,7 @@ contract Wallet is Ownable{
     address payable comissionAddress = payable(0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db);
     
     function setComission(uint _value) public onlyOwner{
+        require(_value <= 100, "Comission should be in range (0..100)"); 
         comission = _value;
     }
     
